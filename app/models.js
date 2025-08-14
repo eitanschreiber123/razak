@@ -9,10 +9,9 @@ const CustomerPaymentTypeSchema = new mongoose.Schema({cardName:String, cardNumb
 const CustomerInfoTypeSchema = new mongoose.Schema({address: String, payment: CustomerPaymentTypeSchema})
 const CustomerSubTypeSchema = new mongoose.Schema({sub:String, price: Number, items: CartItemTypeSchema})
 const CustomerDataTypeSchema = new mongoose.Schema({history: [], sub: CustomerSubTypeSchema, info: CustomerInfoTypeSchema})
-const NewBarberOrderSchema = new mongoose.Schema({date: String,address:String,amount:String,payment:String,paymentMethod:String,status:String,name:String})
+const NewBarberOrderSchema = new mongoose.Schema({date: String,address:String,amount:String,payment:String,paymentMethod:String,status:String,name:String, user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }})
 const NewBarberTypeSchema = new mongoose.Schema({orders: [],paymentType:String,paymentInfo:String})
 const UserTypeSchema = new mongoose.Schema({name: String,email: String,password: String,customerData: CustomerDataTypeSchema, newBarber:NewBarberTypeSchema}, { strict: false })
-const ActiveUserTypeSchema = new mongoose.Schema({ user: UserTypeSchema })
 const EmployeeTypeSchema = new mongoose.Schema({name: String,email: String,password: String})
 const ActiveEmployeeTypeSchema = new mongoose.Schema({ user: EmployeeTypeSchema })
 const CustomerOrderTypeSchema = new mongoose.Schema({price:Number,items:CartItemTypeSchema,status:{
@@ -21,7 +20,6 @@ const CustomerOrderTypeSchema = new mongoose.Schema({price:Number,items:CartItem
       default: "pending",
     },address:AddressTypeSchema, user: { type: mongoose.Schema.Types.ObjectId, ref: "UserType" } }, { strict: false })
 
-export const ActiveUserType = mongoose.models.ActiveUserType || mongoose.model("ActiveUserType", ActiveUserTypeSchema, "activeusertypes");
 export const CartItemType = mongoose.models.CartItemType || mongoose.model("CartItemType", CartItemTypeSchema, "cartitemtypes");
 export const PickupOrderType = mongoose.models.PickupOrderType || mongoose.model("PickupOrderType", PickupOrderTypeSchema, "pickupordertypes");
 export const UserType = mongoose.models.UserType || mongoose.model("UserType", UserTypeSchema, "usertypes");
