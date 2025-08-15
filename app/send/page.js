@@ -16,6 +16,8 @@ export default function Products() {
     <h1>send you hair to one of the following locations or bring it in person, we will weigh it there and pay you 100$ per KG</h1>
             <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>{locations.map((l, ind) => <div key={l} style={{margin:'10px',padding:'10px',borderRadius:'50px',border:'1px solid black'}}>
                 <p>{l.city}</p>
+                <p>{l.name}</p>
+                <p>{l.number}</p>
                 <p>{l.address}</p>
                 </div>)}</div>
                 <Link href="/barber"><button className="ml-3 btn btn-md btn-primary btn-icon-right">My orders</button></Link>

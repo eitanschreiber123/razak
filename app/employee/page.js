@@ -231,7 +231,10 @@ export default function Home() {
         {/* Main Content */}
         {pickupOrders[location] && pickupOrders[location].location && (
           <section style={{ height: '100%', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1>{pickupOrders[location].location}</h1>
+            <div style={{display:'flex'}}>
+              <h1>{pickupOrders[location].location}</h1>
+              <h1>Total amount: {pickupOrders[location].orders.map(o => o.amount).reduce((a, b) => a + b)}kg</h1>
+            </div>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-evenly' }}>
               {filters.slice(0, 3).map((f, i) => (
                 <div key={f.f} style={{ display: 'flex' }}>
@@ -288,7 +291,7 @@ export default function Home() {
       <p>status: {o.status}</p>
 
       {o.status === 'confirmed' ? (
-        <p>amount: {o.amount}</p>
+        <p>amount: {o.amount}kg</p>
       ) : o.status === 'input' ? (
         <input
           type="text"

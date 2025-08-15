@@ -56,7 +56,7 @@ export default function DonateHairCTA() {
             </div>
 
             <Link 
-              href="/contact"
+              href="/send"
               className="inline-flex items-center px-6 py-3 bg-brand-green text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               Find Nearest Collection Point
