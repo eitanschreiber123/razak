@@ -231,9 +231,9 @@ export default function Home() {
         {/* Main Content */}
         {pickupOrders[location] && pickupOrders[location].location && (
           <section style={{ height: '100%', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{display:'flex'}}>
+            <div style={{display:'flex',width:'100%',justifyContent:'space-evenly',flexWrap:'wrap'}}>
               <h1>{pickupOrders[location].location}</h1>
-              <h1>Total amount: {pickupOrders[location].orders.map(o => o.amount).reduce((a, b) => a + b)}kg</h1>
+              {pickupOrders[location].orders.length > 0 && pickupOrders[location].orders.filter(o => o.amount !== '').length > 0 && <h1>Total amount: {pickupOrders[location].orders.map(o => Number(o.amount)).reduce((a, b) => a + b)}kg</h1>}
             </div>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-evenly' }}>
               {filters.slice(0, 3).map((f, i) => (
