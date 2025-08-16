@@ -8,7 +8,7 @@ export default function Products() {
   const [locations, setLocations] = useState([])
   useEffect(() => {
       if (pickupOrders && pickupOrders.length > 0) {
-        setLocations(pickupOrders.map(p => {return {city: p.location,address:'123 Main st'}}));
+        setLocations(pickupOrders.map(p => {return {city: p.location,name:p.name,number:p.number,address:'123 Main st'}}));
       }
     }, [pickupOrders]);
   return (
